@@ -1,0 +1,15 @@
+{
+  "name": "movies",
+  "version": "1.0.0",
+  "description": "API developed in the program Explorer by Rocketseat.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/server.js"
+  },
+  "keywords": [],
+  "author": "Daiane Araújo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

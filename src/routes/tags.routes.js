@@ -1,11 +1,11 @@
 const { Router } = require("express");
 
-const TagsController = require("../controllers/TagsController");
+const MovieTagsController = require("../controllers/MovieTagsController");
 
-const tagsRoutes = Router();
+const movieTagsRoutes = Router();
 
-const tagsController = new TagsController();
+const movieTagsController = new MovieTagsController();
 
-tagsRoutes.post("/", tagsController);
+movieTagsRoutes.post("/", movieTagsController.index);
 
 module.exports = tagsRoutes;

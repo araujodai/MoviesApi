@@ -8,4 +8,4 @@ const movieTagsController = new MovieTagsController();
 
 movieTagsRoutes.post("/", movieTagsController.index);
 
-module.exports = tagsRoutes;
+module.exports = movieTagsRoutes;

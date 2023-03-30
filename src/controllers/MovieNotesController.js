@@ -1,9 +1,19 @@
 const knex = require("../database/knex");
+const AppError = require("../utils/AppError");
+
 
 class MovieNotesController {
   async create(request, response) {
     const { title, description, rating, tags } = request.body;
     const { user_id } = request.params;
+
+    const ratingLimit = rating > 0 && rating < 6
+
+    if (!ratingLimit) {
+      throw new AppError("Informe uma nota de 1 a 5.")
+    }
+
+
 
     const note_id = await knex("movieNotes").insert({
       title,

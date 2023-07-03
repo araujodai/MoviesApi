@@ -15,7 +15,7 @@ class MovieNotesController {
 
 
 
-    const note_id = await knex("movieNotes").insert({
+    const [note_id] = await knex("movieNotes").insert({
       title,
       description,
       rating,

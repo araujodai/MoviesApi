@@ -12,6 +12,7 @@ movieNotesRoutes.use(ensureAuthentication);
 movieNotesRoutes.get("/", movieNotesController.index);
 movieNotesRoutes.post("/", movieNotesController.create);
 movieNotesRoutes.get("/:id", movieNotesController.show);
+movieNotesRoutes.put("/:id", movieNotesController.update);
 movieNotesRoutes.delete("/:id", movieNotesController.delete);
 
 module.exports = movieNotesRoutes;

@@ -13,9 +13,7 @@ class MovieNotesController {
       throw new AppError("Informe uma nota de 1 a 5.")
     }
 
-
-
-    const [note_id] = await knex("movieNotes").insert({
+    const note_id = await knex("movieNotes").insert({
       title,
       description,
       rating,
@@ -46,6 +44,38 @@ class MovieNotesController {
       ...note,
       tags
     });
+  };
+
+  async update(request, response) {
+    const user_id = request.user.id;
+    const { id } = request.params;
+    const { title, rating, description, tags } = request.body;
+
+    const updated_at = knex.fn.now();
+
+    await knex("movieNotes").where({ id, user_id }).update({
+      title,
+      rating,
+      description,
+      user_id,
+      updated_at,
+    })
+
+    if (tags) {
+      const updatedTags = tags.map(name => {
+        return {
+          note_id: id,
+          user_id,
+          name,
+        };
+      });
+
+      await knex("movieTags").where({ note_id: id }).delete();
+      await knex("movieTags").insert(updatedTags);
+    };
+
+
+    return response.status(200).json();
   };
 
   async delete(request, response) {

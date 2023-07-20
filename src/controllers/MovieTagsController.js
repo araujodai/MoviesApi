@@ -8,9 +8,8 @@ class MovieTagsController {
       .where({ user_id })
 
       return response.json(tags);
-
-
   };
+
 };
 
 module.exports = MovieTagsController;
